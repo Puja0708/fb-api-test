@@ -1,0 +1,31 @@
+<!doctype html>
+<title>fb stats</title>
+<body>
+	<h2>  {{page_name}} </h2>
+	<hr/>
+	<table cellpadding="1" cellspacing="1" border="1">
+		<tr>
+			<th>Post id</th>
+			<th>Post Title</th>
+			<th>Author</th>
+			<th>Reach count</th>
+			<th>likes</th>
+		</tr>
+		{% for item in range(0,25) %}
+        <tr>
+			<td>{{post_id}}</td>
+			<td>{{post_title}}</td>
+			<td>{{author}}</td>
+			<!-- <th>{{post_reach_count}}</th> -->
+			<td>NA</td>
+			<td>{{likes}}</td>
+		</tr>
+    	{% endfor %}
+	</table>
+	<hr/>
+	<!-- {% if name %}
+  		<h1>Hello {{ name }}!</h1>
+	{% else %}
+  		<h1>Hello World!</h1>
+	{% endif %} -->
+</body>

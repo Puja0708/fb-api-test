@@ -1,11 +1,12 @@
 from flask import Flask, redirect, url_for, session, request
 from flask_oauth import OAuth
+from flask_sqlalchemy import SQLAlchemy
 
 
-SECRET_KEY = 'development key'
+SECRET_KEY = ''
 DEBUG = True
-FACEBOOK_APP_ID = '188477911223606'
-FACEBOOK_APP_SECRET = '621413ddea2bcc5b2e83d42fc40495de'
+FACEBOOK_APP_ID = ''
+FACEBOOK_APP_SECRET = ''
 
 
 app = Flask(__name__)
