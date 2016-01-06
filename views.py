@@ -110,9 +110,9 @@ def get_json_all():
 	data["post_id"]='aaa'
 	data['author_name'] = 'bbb'
 	print data
-	json_data1 = json.dumps(data, ensure_ascii=False)
+	json_data1 = json.loads(json.dumps(data, ensure_ascii=False))
 	print json_data1
-	print json_data1[0]["post_id"]
+	print json_data1["post_id"]
 
 	
 get_json_all()
