@@ -10,6 +10,7 @@ DEBUG = True
 app = Flask(__name__)
 app.debug = DEBUG
 oauth = OAuth()
+json_array = []
 
 base_url = 'https://graph.facebook.com/v2.2/'
 likes = '116151972998_10153804678607999/likes?access_token=' #replace the post_id
@@ -103,4 +104,23 @@ def get_post_title(id):
 # get_data_from_post_id()
 # get_data_from_page_id()
 # get_number_of_likes_on_post('116151972998_10153809342577999')
-get_post_title('116151972998_10153809426852999')
+# get_post_title('116151972998_10153809426852999')
+def get_json_all():
+	var1 = 'aaa'
+	json_array.append({'post_id': 'qqqq', 'title': var1})
+	# json_array.append({'title': 'aaaa'})
+	# json_array.append({'author': 'ssss'})
+	# json_array.append({'reach_count': 'wwww'})
+	# json_array.append({'likes': 'bbbb'})
+	# json_array.append({'post_id': 'qqqq'})
+	# json_array.append({'title': 'aaaa'})
+	# json_array.append({'author': 'ssss'})
+	# json_array.append({'reach_count': 'wwww'})
+	# json_array.append({'likes': 'bbbb'})
+	# print json_array
+	json_array1 = json.dumps(json_array)
+	print json_array1
+	print len(json_array1)
+	json.dumps(json_array)
+	print len(json_array['post_id'])
+get_json_all()
