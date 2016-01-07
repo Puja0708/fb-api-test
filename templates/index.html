@@ -1,5 +1,10 @@
 <!doctype html>
 <title>fb stats</title>
+<script>
+	$(document).on('click', '.next', function(){
+
+	}
+</script>
 <body>
 	<h2>  {{page_name}} </h2>
 	<hr/>
@@ -11,16 +16,23 @@
 			<th>Reach count</th>
 			<th>likes</th>
 		</tr>
-		{% for item in range(0,25) %}
+
+		<!--data-->
+		<div>&larr;</div>{{data}}<div class="next">&rarr;</div>
+
+		<form action="/foo" method="post">
+    		<button type="submit" value="Next" />
+		</form>
+		<!-- {% for item in range(0,2) %}
         <tr>
 			<td>{{post_id}}</td>
 			<td>{{post_title}}</td>
 			<td>{{author}}</td>
 			<!-- <th>{{post_reach_count}}</th> -->
-			<td>NA</td>
+			<!--<td>NA</td>
 			<td>{{likes}}</td>
 		</tr>
-    	{% endfor %}
+    	{% endfor %} -->
 	</table>
 	<hr/>
 	<!-- {% if name %}
