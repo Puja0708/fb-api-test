@@ -27,21 +27,21 @@ var next_likes_url = ''
 		</tr>
 
 		<!--data-->
-		<div>&larr;</div>{{data}}<div class="next">&rarr;</div>
+		<!-- <div>&larr;</div>{{data}}<div class="next">&rarr;</div> -->
 
 		<form action="/foo" method="post">
     		<button type="submit" value="Next" />
 		</form>
 		{% for item in data %}
-		{{item["post_id"]}}
-        <tr>
+		{{item}}
+        <!-- <tr>
 			<td>{{post_id}}</td>
 			<td>{{post_title}}</td>
 			<td>{{author}}</td>
 			<th>{{post_reach_count}}</th>
 			<td>NA</td>
 			<td>{{likes}}</td>
-		</tr>
+		</tr> -->
     	{% endfor %}
 	</table>
 	<hr/>
