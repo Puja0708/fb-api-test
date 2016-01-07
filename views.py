@@ -5,7 +5,7 @@ import json
 import requests
 
 
-ACCESS_TOKEN = 'CAACEdEose0cBANXHOluTccNW8WoPZCRWr6EtRw7LEo4GCX4D7NYwZB3U25NBGFsxVU95IJly3IXDNZBE6ZAmSUwEfclHqqIBLhGMnytbrDxSqSb4oQOoWi8QsduyC4IPjwz1ZAMTF0l2wb9oAE9xmHWu6scGK3pro7rGAZBRWLcyM5JTW8WyHMSaIwh4qksavyIcL4nKdEZBgZDZD'
+ACCESS_TOKEN = 'CAACEdEose0cBADEzp9pQYnQDbgTtib8ue06GiwTudQiLg80QwyY2mvMjWg0UiRfd69nVcZBZCsQt230KWqidKdZCUH6Izm1kzbqBPYAxHuzykmKUsgTvzT7Ns7vIz6qLFyZAlSefZBPmAvWBf9QBuuMOQiXRsuM6O4z4ICsqHNfzD7IZCifAkexQpV1s8r6L8sLE1WcNrgKKa8tM7Hje6S'
 DEBUG = True
 app = Flask(__name__)
 app.debug = DEBUG
@@ -21,11 +21,11 @@ post = '116151972998_10153804678607999?access_token='
 #we are using the facebook graph API version 2.2, instead of the latest one(2.5)
 def get_data_from_page_id(i):
 	
-	url = 'https://graph.facebook.com/v2.2/116151972998/posts?access_token=CAACEdEose0cBANXHOluTccNW8WoPZCRWr6EtRw7LEo4GCX4D7NYwZB3U25NBGFsxVU95IJly3IXDNZBE6ZAmSUwEfclHqqIBLhGMnytbrDxSqSb4oQOoWi8QsduyC4IPjwz1ZAMTF0l2wb9oAE9xmHWu6scGK3pro7rGAZBRWLcyM5JTW8WyHMSaIwh4qksavyIcL4nKdEZBgZDZD'
+	url = 'https://graph.facebook.com/v2.2/116151972998/posts?access_token=CAACEdEose0cBADEzp9pQYnQDbgTtib8ue06GiwTudQiLg80QwyY2mvMjWg0UiRfd69nVcZBZCsQt230KWqidKdZCUH6Izm1kzbqBPYAxHuzykmKUsgTvzT7Ns7vIz6qLFyZAlSefZBPmAvWBf9QBuuMOQiXRsuM6O4z4ICsqHNfzD7IZCifAkexQpV1s8r6L8sLE1WcNrgKKa8tM7Hje6S'
 	response = requests.get(url)
 	json_data = json.loads(response.text)
 	data1 = json_data["data"]
-		# post_id_to_be_returned = data1[i]["id"]
+	post_id_to_be_returned = data1[i]["id"]
 		# return post_id_to_be_returned
 		# post_id_to_be_returned = data1[i]["id"]
 	# title = data1[i]["name"]
@@ -52,7 +52,7 @@ def get_data_from_page_id(i):
 
 def get_data_from_post_id():
 	# return "hello"
-	url = 'https://graph.facebook.com/v2.2/116151972998/posts?access_token=CAACEdEose0cBANXHOluTccNW8WoPZCRWr6EtRw7LEo4GCX4D7NYwZB3U25NBGFsxVU95IJly3IXDNZBE6ZAmSUwEfclHqqIBLhGMnytbrDxSqSb4oQOoWi8QsduyC4IPjwz1ZAMTF0l2wb9oAE9xmHWu6scGK3pro7rGAZBRWLcyM5JTW8WyHMSaIwh4qksavyIcL4nKdEZBgZDZD'
+	url = 'https://graph.facebook.com/v2.2/116151972998/posts?access_token=CAACEdEose0cBADEzp9pQYnQDbgTtib8ue06GiwTudQiLg80QwyY2mvMjWg0UiRfd69nVcZBZCsQt230KWqidKdZCUH6Izm1kzbqBPYAxHuzykmKUsgTvzT7Ns7vIz6qLFyZAlSefZBPmAvWBf9QBuuMOQiXRsuM6O4z4ICsqHNfzD7IZCifAkexQpV1s8r6L8sLE1WcNrgKKa8tM7Hje6S'
 	response = requests.get(url)
 	json_data = json.loads(response.text)
 	number_of_posts = len(json_data["data"])
@@ -80,7 +80,7 @@ def get_number_of_likes_on_post(id):
 
 def get_author_name(id):
 	# url = base_url + post + ACCESS_TOKEN
-	url = 'https://graph.facebook.com/v2.2/' + id +'?access_token=CAACEdEose0cBANXHOluTccNW8WoPZCRWr6EtRw7LEo4GCX4D7NYwZB3U25NBGFsxVU95IJly3IXDNZBE6ZAmSUwEfclHqqIBLhGMnytbrDxSqSb4oQOoWi8QsduyC4IPjwz1ZAMTF0l2wb9oAE9xmHWu6scGK3pro7rGAZBRWLcyM5JTW8WyHMSaIwh4qksavyIcL4nKdEZBgZDZD'
+	url = 'https://graph.facebook.com/v2.2/' + id +'?access_token=CAACEdEose0cBADEzp9pQYnQDbgTtib8ue06GiwTudQiLg80QwyY2mvMjWg0UiRfd69nVcZBZCsQt230KWqidKdZCUH6Izm1kzbqBPYAxHuzykmKUsgTvzT7Ns7vIz6qLFyZAlSefZBPmAvWBf9QBuuMOQiXRsuM6O4z4ICsqHNfzD7IZCifAkexQpV1s8r6L8sLE1WcNrgKKa8tM7Hje6S'
 	response = requests.get(url)
 	json_data = json.loads(response.text)
 	author_name = json_data["admin_creator"]["name"]
@@ -90,7 +90,7 @@ def get_author_name(id):
 
 def get_data_for_json(id):
 	# url = base_url + post + ACCESS_TOKEN
-	url = 'https://graph.facebook.com/v2.2/' + id +'?access_token=CAACEdEose0cBANXHOluTccNW8WoPZCRWr6EtRw7LEo4GCX4D7NYwZB3U25NBGFsxVU95IJly3IXDNZBE6ZAmSUwEfclHqqIBLhGMnytbrDxSqSb4oQOoWi8QsduyC4IPjwz1ZAMTF0l2wb9oAE9xmHWu6scGK3pro7rGAZBRWLcyM5JTW8WyHMSaIwh4qksavyIcL4nKdEZBgZDZD'
+	url = 'https://graph.facebook.com/v2.2/' + id +'?access_token=CAACEdEose0cBADEzp9pQYnQDbgTtib8ue06GiwTudQiLg80QwyY2mvMjWg0UiRfd69nVcZBZCsQt230KWqidKdZCUH6Izm1kzbqBPYAxHuzykmKUsgTvzT7Ns7vIz6qLFyZAlSefZBPmAvWBf9QBuuMOQiXRsuM6O4z4ICsqHNfzD7IZCifAkexQpV1s8r6L8sLE1WcNrgKKa8tM7Hje6S'
 	response = requests.get(url)
 	json_data = json.loads(response.text)
 	author_name = json_data["admin_creator"]["name"]
@@ -173,7 +173,7 @@ def get_json_all(i):
 def get_json_test():
 	dict_test = []
 	c = ''
-	for a in range(0,10):
+	for a in range(0,5):
 		b = get_json_all(a)
 		b = str(b)
 		c = c + ',' + b
@@ -181,22 +181,24 @@ def get_json_test():
 		
 	dict_test.append(c)
 	json_data1 = json.loads(json.dumps(dict_test, ensure_ascii=False))
-	return json_data1
+	print len(json_data1)
+	# return json_data1
 
-def get_json_test():
-	dict_test = []
-	c = ''
-	for a in range(10,25):
-		b = get_json_all(a)
-		b = str(b)
-		c = c + ',' + b
-		# dict_test.append(b)
+# def get_json_test():
+# 	dict_test = []
+# 	c = ''
+# 	for a in range(10,25):
+# 		b = get_json_all(a)
+# 		b = str(b)
+# 		c = c + ',' + b
+# 		# dict_test.append(b)
 		
-	dict_test.append(c)
-	json_data1 = json.loads(json.dumps(dict_test, ensure_ascii=False))
-	return json_data1
+# 	dict_test.append(c)
+# 	json_data1 = json.loads(json.dumps(dict_test, ensure_ascii=False))
+# 	return json_data1
 
 
 # get_json_test()
-a = get_data_from_page_id(28)
-print a
+# a = get_data_from_page_id(28)
+# print a
+get_json_test()

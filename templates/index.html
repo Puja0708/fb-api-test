@@ -1,8 +1,17 @@
 <!doctype html>
 <title>fb stats</title>
 <script>
+var next_post_url = ''
+var next_likes_url = ''
 	$(document).on('click', '.next', function(){
+		$.ajax({
+			url: 'https://graph.facebook.com/v2.2/116151972998/posts?access_token=CAACEdEose0cBADEzp9pQYnQDbgTtib8ue06GiwTudQiLg80QwyY2mvMjWg0UiRfd69nVcZBZCsQt230KWqidKdZCUH6Izm1kzbqBPYAxHuzykmKUsgTvzT7Ns7vIz6qLFyZAlSefZBPmAvWBf9QBuuMOQiXRsuM6O4z4ICsqHNfzD7IZCifAkexQpV1s8r6L8sLE1WcNrgKKa8tM7Hje6S&limit=25&until=1452155137&__paging_token=enc_AdCfEyahHs4gAIB3C6xuq7EqCJEZCFMSlq9poYfhn024ZBW0YrjmZAb5226I6GigaY6fwjot1kfbHcUJQroJlenxi5C38LD3ZA3IZAZBrVUxfVBSl9LgZDZD',
+			dataType: 'json',
+			success: function(data) {
+				next_url = data["paging"]["next"];
+		    }	
 
+		})
 	}
 </script>
 <body>
@@ -23,16 +32,17 @@
 		<form action="/foo" method="post">
     		<button type="submit" value="Next" />
 		</form>
-		<!-- {% for item in range(0,2) %}
+		{% for item in data %}
+		{{item["post_id"]}}
         <tr>
 			<td>{{post_id}}</td>
 			<td>{{post_title}}</td>
 			<td>{{author}}</td>
-			<!-- <th>{{post_reach_count}}</th> -->
-			<!--<td>NA</td>
+			<th>{{post_reach_count}}</th>
+			<td>NA</td>
 			<td>{{likes}}</td>
 		</tr>
-    	{% endfor %} -->
+    	{% endfor %}
 	</table>
 	<hr/>
 	<!-- {% if name %}
