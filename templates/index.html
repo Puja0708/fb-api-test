@@ -38,22 +38,21 @@
 		<!--data-->
 		<!-- <div>&larr;</div>{{data}}<div class="next">&rarr;</div> -->
 
-		
+		{{data}}
 
 		{% for item in data %}
-		{{item}} <br/>
+		<!-- {{item}} <br/> -->
+		<tr>
+			<td>{{item.post_id}}</td>
+			<td>{{item.post_title}}</td>
+			<td>{{item.author}}</td>
+			<th>{{item.post_reach_count}}</th>
+			<!-- <td>NA</td> -->
+			<td>{{item.ikes}}</td>
+		</tr> 
 		{% endfor %} 
 
-		{% for item in range(0,30) %}
-        <tr>
-			<td>{{post_id}}</td>
-			<td>{{post_title}}</td>
-			<td>{{author}}</td>
-			<th>{{post_reach_count}}</th>
-			<td>NA</td>
-			<td>{{likes}}</td>
-		</tr> 
-    	{% endfor %} 
+		
 	</table>
 	<hr/>
 	<!-- {% if name %}

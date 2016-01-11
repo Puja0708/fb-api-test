@@ -3,9 +3,10 @@ from flask_oauth import OAuth
 from flask_sqlalchemy import SQLAlchemy
 import json
 import requests
+import sqlite3
 
 
-ACCESS_TOKEN = 'CAACEdEose0cBAAgMtigolTiocMv8IfJkWoWG3sBThnLIqQ4rQRbEb8p7CbfWxZBnrYHWh9zE9Aoemo8znzt5Kx5fBonfwFjH8dHKIWcWsFsxFaIMhMuwoTcBTc0Qos11XEzIFg72AB4dtjj3zHiDHXyZBKMOqBHyf4jhnZCzo8dj3BBHAv2PL5hqKCWZBOEZD'
+ACCESS_TOKEN = 'CAACEdEose0cBAKTE1SgAIrAKkwi6WLMtg4QN28ZCkNDebFCZCK0c70MwEjnKIltZCJtz5PSJcZAzZC6zZAUx3p1sEkXzZCTkPTs92gb7bZCbIIgOThQwrWiTFkt1VcoTwCjibZBM6X89iNdjGBRI2aKw437kKkosVdBV44bVxJUUScuFdPCBcT6wWtqPZAhTuag1pmbZArS95I2KQwZATK1C77k4'
 DEBUG = True
 app = Flask(__name__)
 app.debug = DEBUG
@@ -21,7 +22,7 @@ post = '116151972998_10153804678607999?access_token='
 #we are using the facebook graph API version 2.2, instead of the latest one(2.5)
 def get_data_from_page_id(i):
 	
-	url = 'https://graph.facebook.com/v2.2/116151972998/posts?access_token=CAACEdEose0cBAAgMtigolTiocMv8IfJkWoWG3sBThnLIqQ4rQRbEb8p7CbfWxZBnrYHWh9zE9Aoemo8znzt5Kx5fBonfwFjH8dHKIWcWsFsxFaIMhMuwoTcBTc0Qos11XEzIFg72AB4dtjj3zHiDHXyZBKMOqBHyf4jhnZCzo8dj3BBHAv2PL5hqKCWZBOEZD'
+	url = 'https://graph.facebook.com/v2.2/116151972998/posts?access_token=CAACEdEose0cBAKTE1SgAIrAKkwi6WLMtg4QN28ZCkNDebFCZCK0c70MwEjnKIltZCJtz5PSJcZAzZC6zZAUx3p1sEkXzZCTkPTs92gb7bZCbIIgOThQwrWiTFkt1VcoTwCjibZBM6X89iNdjGBRI2aKw437kKkosVdBV44bVxJUUScuFdPCBcT6wWtqPZAhTuag1pmbZArS95I2KQwZATK1C77k4'
 	# response = requests.get(url)
 	json_data = connect_url(url)
 	# connect_url(url)
@@ -53,7 +54,7 @@ def get_data_from_page_id(i):
 
 def get_data_from_post_id():
 	# return "hello"
-	url = 'https://graph.facebook.com/v2.2/116151972998/posts?access_token=CAACEdEose0cBAAgMtigolTiocMv8IfJkWoWG3sBThnLIqQ4rQRbEb8p7CbfWxZBnrYHWh9zE9Aoemo8znzt5Kx5fBonfwFjH8dHKIWcWsFsxFaIMhMuwoTcBTc0Qos11XEzIFg72AB4dtjj3zHiDHXyZBKMOqBHyf4jhnZCzo8dj3BBHAv2PL5hqKCWZBOEZD'
+	url = 'https://graph.facebook.com/v2.2/116151972998/posts?access_token=CAACEdEose0cBAKTE1SgAIrAKkwi6WLMtg4QN28ZCkNDebFCZCK0c70MwEjnKIltZCJtz5PSJcZAzZC6zZAUx3p1sEkXzZCTkPTs92gb7bZCbIIgOThQwrWiTFkt1VcoTwCjibZBM6X89iNdjGBRI2aKw437kKkosVdBV44bVxJUUScuFdPCBcT6wWtqPZAhTuag1pmbZArS95I2KQwZATK1C77k4'
 	json_data = connect_url(url)
 	number_of_posts = len(json_data["data"])
 
@@ -79,7 +80,7 @@ def get_number_of_likes_on_post(id):
 
 def get_author_name(id):
 	# url = base_url + post + ACCESS_TOKEN
-	url = 'https://graph.facebook.com/v2.2/' + id +'?access_token=CAACEdEose0cBAAgMtigolTiocMv8IfJkWoWG3sBThnLIqQ4rQRbEb8p7CbfWxZBnrYHWh9zE9Aoemo8znzt5Kx5fBonfwFjH8dHKIWcWsFsxFaIMhMuwoTcBTc0Qos11XEzIFg72AB4dtjj3zHiDHXyZBKMOqBHyf4jhnZCzo8dj3BBHAv2PL5hqKCWZBOEZD'
+	url = 'https://graph.facebook.com/v2.2/' + id +'?access_token=CAACEdEose0cBAKTE1SgAIrAKkwi6WLMtg4QN28ZCkNDebFCZCK0c70MwEjnKIltZCJtz5PSJcZAzZC6zZAUx3p1sEkXzZCTkPTs92gb7bZCbIIgOThQwrWiTFkt1VcoTwCjibZBM6X89iNdjGBRI2aKw437kKkosVdBV44bVxJUUScuFdPCBcT6wWtqPZAhTuag1pmbZArS95I2KQwZATK1C77k4'
 	json_data = connect_url(url)
 	author_name = json_data["admin_creator"]["name"]
 	# post_id = json_data["id"]
@@ -88,7 +89,7 @@ def get_author_name(id):
 
 def get_data_for_json(id):
 	# url = base_url + post + ACCESS_TOKEN
-	url = 'https://graph.facebook.com/v2.2/' + id +'?access_token=CAACEdEose0cBAAgMtigolTiocMv8IfJkWoWG3sBThnLIqQ4rQRbEb8p7CbfWxZBnrYHWh9zE9Aoemo8znzt5Kx5fBonfwFjH8dHKIWcWsFsxFaIMhMuwoTcBTc0Qos11XEzIFg72AB4dtjj3zHiDHXyZBKMOqBHyf4jhnZCzo8dj3BBHAv2PL5hqKCWZBOEZD'
+	url = 'https://graph.facebook.com/v2.2/' + id +'?access_token=CAACEdEose0cBAKTE1SgAIrAKkwi6WLMtg4QN28ZCkNDebFCZCK0c70MwEjnKIltZCJtz5PSJcZAzZC6zZAUx3p1sEkXzZCTkPTs92gb7bZCbIIgOThQwrWiTFkt1VcoTwCjibZBM6X89iNdjGBRI2aKw437kKkosVdBV44bVxJUUScuFdPCBcT6wWtqPZAhTuag1pmbZArS95I2KQwZATK1C77k4'
 	json_data = connect_url(url)
 	author_name = json_data["admin_creator"]["name"]
 	# post_id = id
@@ -222,5 +223,38 @@ def connect_url(url):
 	json_data = json.loads(response.text)
 	return json_data
 
-a = get_json_test()
-print a
+# a = get_json_test()
+# print a
+
+def database_test():
+	sqlite_file = '/home/puja/Documents/fb-api-test/fb-api.db'
+	table_name1 = 'fb_api_test'
+
+	conn = sqlite3.connect(sqlite_file)
+	c = conn.cursor()
+
+	c.execute('CREATE TABLE IF NOT EXISTS fb_api_test (post_id integer, post_title text, author text, likes integer)')
+
+	# post_id = 1234588
+	# post_title = 'aaaaghaaaaaaabb'
+	# author = 'dddgfdee'
+	# likes = 14
+	for i in range(1,25):
+		post_id = get_data_from_page_id(i)
+		post_title, author = get_author_name(post_id)
+		likes = get_number_of_likes_on_post(post_id)
+
+		c.execute("insert into fb_api_test(post_id, post_title, author, likes) values (?,?,?,?)",(post_id,post_title,author,likes))
+		# c.execute("insert into fb_api_test(post_title) values (?)",(post_title,))
+		# c.execute("insert into fb_api_test(author) values (?)",(author,))
+		# c.execute("insert into fb_api_test(likes) values (?)",(likes,))
+
+		
+	conn.commit()
+	conn.close()
+
+database_test()
+# def get_total_number_of_posts_on_page():
+# 	url = 'https://graph.facebook.com/v2.2/116151972998/posts?access_token=CAACEdEose0cBAKTE1SgAIrAKkwi6WLMtg4QN28ZCkNDebFCZCK0c70MwEjnKIltZCJtz5PSJcZAzZC6zZAUx3p1sEkXzZCTkPTs92gb7bZCbIIgOThQwrWiTFkt1VcoTwCjibZBM6X89iNdjGBRI2aKw437kKkosVdBV44bVxJUUScuFdPCBcT6wWtqPZAhTuag1pmbZArS95I2KQwZATK1C77k4'
+# 	posts_count = 0
+# 	postsCount = postsCount + {the posts json array size}

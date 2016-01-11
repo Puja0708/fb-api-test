@@ -5,15 +5,15 @@
 from flask import Flask, Markup
 from flask import render_template
 # from views import get_number_of_likes_on_post, get_author_name, get_data_from_page_id
-from views import get_json_test
+from views_new import get_data
 
 app = Flask(__name__)
 data = ''
 @app.route('/')
 def hello_world():
-	data = get_json_test()
-	# print data
-	return render_template('index.html', page_name='SportsKeeda', data=data)
+	data = get_data()
+	return render_template('index.html', data=data)
+	# return render_template('index.html', page_name='SportsKeeda', data=data)
 	# for i in xrange(0,25):
 		# id = get_data_from_page_id()
 		# id = str(id)
@@ -33,11 +33,11 @@ def hello_world():
 # def test_json_data():
 # 	return render_template('test_json.html')
 
-@app.route('/foo')
-def next():
-	data1 = get_json_test()
-	# print data
-	return render_template('index.html', data1=data1)
+# @app.route('/foo')
+# def next():
+# 	data1 = get_data()
+# 	# print data
+# 	return render_template('index.html', data1=data1)
 
 if __name__ == '__main__':
 	app.run(port=1234, debug=True)
