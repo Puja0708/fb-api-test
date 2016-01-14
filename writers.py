@@ -10,7 +10,11 @@ query = 'select author_id, author_url, author_title, author_post_count, total_re
 cursor = db.cursor()
 cursor.execute(query)
 rows = cursor.fetchall()
+json_data = {}
+for row in rows:
+	json_data.append(row)
 
 
 
 print rows
+print json_data
