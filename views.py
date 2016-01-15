@@ -263,6 +263,7 @@ def database_test():
 		# c.execute("insert into fb_api_test(post_title) values (?)",(post_title,))
 		# c.execute("insert into fb_api_test(author) values (?)",(author,))
 		# c.execute("insert into fb_api_test(likes) values (?)",(likes,))
+			
 
 	conn.commit()
 	conn.close()
