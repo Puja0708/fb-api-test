@@ -19,7 +19,7 @@ conn = dbapi.connect(host=dbServer,user=dbUser,passwd=dbPass,db="sportskeeda")
 c = conn.cursor()
 # print "done"
 
-dbQuery = "SELECT distinct author_id FROM keeda_author_fact  ORDER BY author_post_count DESC LIMIT 1953,1000;"
+dbQuery = "SELECT distinct author_id FROM keeda_author_fact  ORDER BY author_post_count DESC LIMIT 15941,50000;"
 c.execute(dbQuery)
 results = c.fetchall()
 
@@ -51,18 +51,39 @@ for ids in authors_final:
 	json_data2 = json.loads(response2.text)
 	# print json_data["fan_title"]
 	author_id = ids
-	user_email = json_data["user_email"]
-	user_nicename = json_data["user_nicename"]
-	author_url = json_data["author_url"]
-	posts_published = json_data["posts_published"]
+	if 'user_email' in json_data.keys():
+		user_email = json_data["user_email"]
+	else:
+		user_email = ' '
+	if 'user_nicename' in json_data.keys():
+		user_nicename = json_data["user_nicename"]
+	else:
+		user_nicename = ' '
+	if 'author_url' in json_data.keys():
+		author_url = json_data["author_url"]
+	else:
+		author_url = ' '
+	if 'posts_published' in json_data.keys():
+		posts_published = json_data["posts_published"]
+	else:
+		posts_published = 0
 	if 'editors_pick' in json_data.keys():
 		editors_pick = json_data["editors_pick"]
 	else:
 		editors_pick = 0
-	reads_received = json_data["reads_received"]
-	if "post_date_formatted" in json_data2[0]:
-		last_published_date = json_data2[0]["post_date_formatted"]
+	if 'reads_received' in json_data.keys():
+		reads_received = json_data["reads_received"]
 	else:
+		reads_received = 0
+	# if "post_date_formatted" in json_data2[0].keys():
+	# print json_data2[0]
+	count = len(json_data2)
+	# print count
+	if count>0:
+		if json_data2[0] and 'post_date_formatted' in json_data2[0].keys():
+			last_published_date = json_data2[0]["post_date_formatted"]
+	else:
+		print "foo"
 		last_published_date = 0
 	print user_email, user_nicename, posts_published, reads_received, editors_pick, last_published_date
 	with open('/home/puja/Documents/fb-api-test/test.csv', 'a') as outfile:
@@ -90,6 +111,16 @@ def get_all_author_ids():
 	while result in results:
 		array.append(result)
 	print array
+
+def get_all_data_from_db():
+	bServer='localhost'
+	dbPass=''
+	dbSchema='sportskeeda'
+	dbUser='sportskeeda'
+	database_location="/var/lib/mysql/sportskeeda"
+	conn = dbapi.connect(host=dbServer,user=dbUser,passwd=dbPass,db="sportskeeda")
+	c = conn.cursor()
+
 
 
 # get_all_author_ids()
